@@ -1,0 +1,29 @@
+body{
+font-family: Georgia, 'Times New Roman', Times, serif;
+color: midnightblue;
+background-color: lightpink;}
+nav{
+background-color: lightblue;
+text-align: center;   
+font-style: oblique;
+}
+footer{
+text-align: right;
+background-color: lightblue;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+h1{
+text-align: center;
+font-weight: bold;
+font-size: large;
+}
+img{
+align-items: center;
+height: 500px;
+width: auto;
+}
+p{
+text-align: center;
+color: black;
+line-height: 2;
+}
