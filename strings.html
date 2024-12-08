@@ -1,0 +1,99 @@
+<!--Alaya-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+<!--Creates CSS in and HTML doc-->
+    <style>
+body{
+    background-color: lightsalmon;
+    color: navy;
+    font-family: 'Times New Roman', Times, serif;
+    border: 5px solid navy;
+    padding: 20px;
+}
+button{
+    background-color: navy;
+    color: lightsalmon;
+}
+    </style>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <p>Enter a word to check if it is a palindrome!</p>
+    <!--Creates Textbox for user input-->
+    <input type="text" id="userInput" placeholder="Enter a Word">
+    <button onclick="checkPalindrome()">Check Palindrome</button>
+    <!--Results will be displayed here-->
+    <p id="result"></p>
+    <!--Assignment 1 Ends Here-->
+    <h2>Secret Message</h2>
+    <!--Provides instructions-->
+    <p>Begin entering your name and zip code here for a secret message!</p>
+    <input type="text" id="firstName" placeholder="First Name">
+    <input type="text" id="lastName" placeholder="Last Name">
+    <!--Includes '5 digits' to prevent error as sometimes zips can be 9 digits-->
+    <input type="text" id="zipCode" placeholder="Zip Code (5 digits)">
+    <button onclick="checkUserInfo()">Submit</button>
+    <p id="fullNameDisplay"></p>
+    <p id="secretMessage"></p>
+    <!--Creates JS in the HTML doc-->
+    <script>
+            function checkPalindrome(){
+                let input = document.getElementById("userInput").value;
+                //Exiting the loop if no input is given
+            if (!input) {
+                return;
+            }
+        //Creates the variable of Palindrome and assumes it is true, to be verified in the loop
+        let isPalindrome = true;
+            //Loop to compare the characters
+            for (let i = 0; i < input.length / 2; i++) {
+                //If the characters do not match- its setting up a false statement
+                if (input[i] !== input[input.length - 1 - i]) {
+                    //if the characters of the string don't match the string is not a palindrome
+                    isPalindrome = false;
+                    //exits the loop if it is not a palindrome
+                    break;}
+        }
+               //Determines if the string is a palindrome
+let resultElement = document.getElementById("result");
+if (isPalindrome) {
+    //Notifies user the string is a palindrome
+    resultElement.textContent = input + " is a Palindrome!";
+}
+//Notifies user the string is not a palindrome
+else{
+    resultElement.textContent = input + " is NOT a Palindrome.";
+} 
+//Clears input for user to test a new word
+document.getElementById("userInput").value = ""; 
+}
+//Assignment 1 ends here
+//New function to check if information is valid before displaying the message
+function checkUserInfo (){
+//Getting the first and last name from the text boxes
+let firstName = document.getElementById("firstName").value;
+let lastName = document.getElementById("lastName").value;
+//Combine first and last name to become full name- one variable
+let fullName = firstName + " " + lastName;
+//Checks if the name is valid and allows for corrections to continue
+if (fullName.length>20) {
+    alert("Name is too long. Please enter a shoter name.");
+return; //Will not continue if name is too long
+}
+//Gettig zip code from text box
+let zipCode = document.getElementById("zipCode").value;
+//Checking if the input was 5 digits
+if (zipCode.length !== 5 || isNaN(zipCode)) {
+alert("Invalid zip code. Please add a 5-digit number.");
+return; //Will only continue with valid zip code.
+}
+document.getElementById("fullNameDisplay").textContent = "Hello, " + fullName + "!";
+document.getElementById("secretMessage").textContent = "Secret Message: Palindrome comes from Greek palindromos, meaning 'running back again,' which itself is from palin ('back,'' 'again') and dramein ('to run')!";
+}
+    </script>
+</body>
+</html>
