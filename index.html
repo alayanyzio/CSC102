@@ -1,13 +1,65 @@
+<!--Alaya-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSC102</title>
+    <link rel="stylesheet" href="main.css">
 </head>
-<body style="background-color: lightpink;">
+<body>
     <h1>Intro to Programming</h1>
     <p>CSC102</p>
-    <p><img src="lana-del-rey-meme.jpg" alt=""></p>
+    <nav><a href="boards.html">Boards</a></nav>
+    <!--The image with an id to make the JS easier-->
+    <p><img id= "meme" src="lana-del-rey-meme.jpg" alt=""></p>
+    <!--Start button-->
+    <button id="startButton" onclick="startMoving()">Start</button>
+    <!--Stop button-->
+    <button id="stopButton" onclick="stopMoving()">Stop</button>
+    <footer>
+        <p>Introduction to Programming: UAT</p>
+    </footer>
+    <!--Start of JavaScript-->
+    <script>
+//Variables
+let timer;
+//Getting the image so it can be moved
+const meme = document.getElementById("meme");
+//Accessing the buttons so they can be actionable
+const startButton = document.getElementById("startButton");
+const stopButton = document.getElementById("stopButton");
+function moveMeme() {
+//Calculating maximum width and height of movement
+    const maxX = window.innerWidth - meme.offsetWidth;
+    const maxY = window.innerHeight - meme.offsetHeight;
+    //Generating random positions for movement
+    const randomX = Math.floor(Math.random()* maxX);
+    const randomY = Math.floor(Math.random()* maxY);
+    //Allows for free movement
+    meme.style.position = "absolute";
+    //Applies the random positions
+    meme.style.left = `${randomX}px`;
+    meme.style.right = `${randomY}px`;
+}
+//Funtion to make image move when start is clicked
+function startMoving(){
+    //Prevents multiple clicks
+    startButton.disabled = true;
+    //Enables the stop button
+    stopButton.disabled = false;
+    //Moves image every 500ms
+    timer = setInterval(moveMeme, 500);
+}
+//Function to make image stop moving when stop is clicked
+function stopMoving(){
+    //Prevents multiple clicks
+    stopButton.disabled = true;
+    //Enables start 
+    startButton.disabled = false;
+    //Stops movement by stopping the timer
+    clearInterval(timer);
+}
+    </script>
 </body>
 </html>

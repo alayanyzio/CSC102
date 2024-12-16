@@ -22,6 +22,13 @@ button{
 </head>
 <body>
     <h1>Palindrome Checker</h1>
+     <!--Start of week 4-->
+    <!--Button to enable audio for user-->
+    <button id="audioControlButton" onclick="toggleAudio()">Play Sound</button>
+    <!--Audio-->
+    <audio id="backgroundMusic">
+        <source src="us-lab-background-1.mp3" type="audio/mpeg">
+    </audio>
     <p>Enter a word to check if it is a palindrome!</p>
     <!--Creates Textbox for user input-->
     <input type="text" id="userInput" placeholder="Enter a Word">
@@ -36,24 +43,44 @@ button{
     <input type="text" id="lastName" placeholder="Last Name">
     <!--Includes '5 digits' to prevent error as sometimes zips can be 9 digits-->
     <input type="text" id="zipCode" placeholder="Zip Code (5 digits)">
+    <!--Button so the user can click to submit the info-->
     <button onclick="checkUserInfo()">Submit</button>
+    <!--Displays both the user's name to make it feel personal and the secret message-->
     <p id="fullNameDisplay"></p>
     <p id="secretMessage"></p>
     <!--Creates JS in the HTML doc-->
     <script>
+        //Week 4 audio function
+        function toggleAudio(){
+            //Getting the audio and button so they can be made actionable
+            const audio = document.getElementById("backgroundMusic");
+            const button = document.getElementById("audioControlButton");
+            //Checks if audio is paused
+            if (audio.paused) {
+                //Plays audio
+                audio.play();
+                //Changes the text on the button once audio starts so user knows it can be muted
+                button.textContent = "Pause Music";
+            } else {
+                //Pauses audio
+                audio.pause();
+                //Chages the text on button when audio is not playing so user knows it can be started again
+                button.textContent = "Play Music";
+        }
             function checkPalindrome(){
                 let input = document.getElementById("userInput").value;
                 //Exiting the loop if no input is given
             if (!input) {
                 return;
-            }
+            } 
+            } }
         //Creates the variable of Palindrome and assumes it is true, to be verified in the loop
         let isPalindrome = true;
             //Loop to compare the characters
             for (let i = 0; i < input.length / 2; i++) {
-                //If the characters do not match- its setting up a false statement
+                //If the characters do not match- it is setting up a false statement
                 if (input[i] !== input[input.length - 1 - i]) {
-                    //if the characters of the string don't match the string is not a palindrome
+                    //If the characters of the string don't match, the string is not a palindrome
                     isPalindrome = false;
                     //exits the loop if it is not a palindrome
                     break;}
@@ -70,7 +97,6 @@ else{
 } 
 //Clears input for user to test a new word
 document.getElementById("userInput").value = ""; 
-}
 //Assignment 1 ends here
 //New function to check if information is valid before displaying the message
 function checkUserInfo (){
@@ -91,6 +117,7 @@ if (zipCode.length !== 5 || isNaN(zipCode)) {
 alert("Invalid zip code. Please add a 5-digit number.");
 return; //Will only continue with valid zip code.
 }
+//This is the information that will be displayed on the page
 document.getElementById("fullNameDisplay").textContent = "Hello, " + fullName + "!";
 document.getElementById("secretMessage").textContent = "Secret Message: Palindrome comes from Greek palindromos, meaning 'running back again,' which itself is from palin ('back,'' 'again') and dramein ('to run')!";
 }
