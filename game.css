@@ -28,3 +28,10 @@ h1{
 background-color: olive;
 -webkit-text-stroke: 1px black;
 }
+nav{
+    background-color: olive;
+    text-align: center;   
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+color: antiquewhite;
+-webkit-text-stroke: .5px black;
+}
